@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InternConnect - Find Your Perfect Internship</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #f72585;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .search-bar {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            padding: 0 1.5rem;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: var(--secondary);
+        }
+
+        .features {
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+        }
+
+        .internship-section {
+            padding: 4rem 0;
+        }
+
+        .filter-section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: 1px solid var(--light-gray);
+            background-color: white;
+            outline: none;
+        }
+
+        .internship-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .internship-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .internship-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .internship-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .internship-content {
+            padding: 1.5rem;
+        }
+
+        .internship-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .internship-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .company-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0.7rem;
+            background-color: var(--light-gray);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .company-logo {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .internship-details {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .detail-tag {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .internship-desc {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            display: -webkit-box;
+            
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .internship-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .posted-date {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .apply-btn {
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .apply-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        .application-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .application-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            padding: 2rem;
+            transform: translateY(-20px);
+            transition: transform 0.3s;
+        }
+
+        .application-modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            border: 2px dashed var(--light-gray);
+            border-radius: 5px;
+            background-color: var(--light);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary);
+        }
+
+        .file-upload-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .file-upload-text {
+            text-align: center;
+            color: var(--gray);
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .search-bar {
+                flex-direction: column;
+                border-radius: 10px;
+            }
+
+            .search-bar input {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .search-bar button {
+                padding: 1rem;
+                width: 100%;
+            }
+
+            .internship-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .filter-options {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .filter-select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-handshake logo-icon"></i>
+                    <span>InternConnect</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#internships">Internships</a></li>
+                    <li><a href="#companies">Companies</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="loginBtn">Login</button>
+                    <button class="btn btn-primary">Sign Up</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Find Your Perfect Internship</h1>
+                <p>Connect with top companies and kickstart your career with our curated internship opportunities</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for internships, companies, or skills...">
+                    <button><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose InternConnect?</h2>
+                <p>We provide the best platform to connect students with meaningful internship opportunities</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Diverse Opportunities</h3>
+                    <p>Access internships across various industries and company sizes, from startups to Fortune 500 companies.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Career Growth</h3>
+                    <p>Gain valuable experience that enhances your resume and builds your professional network.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Mentorship</h3>
+                    <p>Receive guidance from industry professionals to help you navigate your career path.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="internship-section" id="internships">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Internships</h2>
+                <p>Browse through our latest internship opportunities</p>
+            </div>
+            <div class="filter-section">
+                <div class="filter-header">
+                    <h3>Filters</h3>
+                    <button class="btn btn-outline">Reset Filters</button>
+                </div>
+                <div class="filter-options">
+                    <select class="filter-select">
+                        <option value="">All Industries</option>
+                        <option value="tech">Technology</option>
+                        <option value="finance">Finance</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="marketing">Marketing</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="">All Locations</option>
+                        <option value="remote">Remote</option>
+                        <option value="new-york">New York</option>
+                        <option value="san-francisco">San Francisco</option>
+                        <option value="chicago">Chicago</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="">All Durations</option>
+                        <option value="summer">Summer</option>
+                        <option value="fall">Fall</option>
+                        <option value="winter">Winter</option>
+                        <option value="spring">Spring</option>
+                    </select>
+                </div>
+            </div>
+            <div class="internship-list" id="internshipList">
+                <!-- Internship cards will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="application-modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Login to Your Account</h3>
+                <button class="close-btn" id="closeLoginModal">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" required>
+                </div>
+                <div class="form-group" style="text-align: right;">
+                    <a href="#" style="color: var(--primary); font-size: 0.9rem;">Forgot Password?</a>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+                <p style="text-align: center; margin-top: 1rem; color: var(--gray);">
+                    Don't have an account? <a href="#" style="color: var(--primary);" id="showSignup">Sign up</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="application-modal" id="applicationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Apply for Internship</h3>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <form id="applicationForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="education">Education Level</label>
+                    <select id="education" class="form-control" required>
+                        <option value="">Select your education level</option>
+                        <option value="high-school">High School</option>
+                        <option value="undergraduate">Undergraduate</option>
+                        <option value="graduate">Graduate</option>
+                        <option value="phd">PhD</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="major">Major/Field of Study</label>
+                    <input type="text" id="major" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="coverLetter">Cover Letter</label>
+                    <textarea id="coverLetter" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Resume Upload</label>
+                    <div class="file-upload" id="resumeUpload">
+                        <i class="fas fa-cloud-upload-alt file-upload-icon"></i>
+                        <p class="file-upload-text">Click to upload or drag and drop</p>
+                        <p class="file-upload-text">PDF, DOCX up to 5MB</p>
+                        <input type="file" id="resume" accept=".pdf,.doc,.docx" required>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>InternConnect</h3>
+                    <p>Connecting students with meaningful internship opportunities since 2023.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>For Students</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Find Internships</a></li>
+                        <li><a href="#">Career Resources</a></li>
+                        <li><a href="#">Resume Builder</a></li>
+                        <li><a href="#">Interview Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>For Employers</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Post Internships</a></li>
+                        <li><a href="#">Find Talent</a></li>
+                        <li><a href="#">Recruitment Solutions</a></li>
+                        <li><a href="#">Employer Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">Feedback</a></li>
+                        <li><a href="#">Partnerships</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 InternConnect. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample internship data
+        const internships = [
+            {
+                id: 1,
+                title: "Software Engineering Intern",
+                company: "TechCorp",
+                image: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1565e83f-9ee8-48bb-86b9-79acfd67a8fc.png",
+                logo: "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/101d067c-e3e2-43f9-bb33-d8a6581301ad.png",
+                location: "San Francisco, CA (Remote Available)",
+                duration: "Summer 2025",
+                type: "Full-time",
+                salary: "$30/hr",
+                description: "Join our innovative engineering team to develop cutting-edge software solutions. You'll work closely with senior engineers on real projects that impact millions of users.",
+                posted: "2 days ago"
+            },
+            {
+                id: 2,
+                title: "Marketing Intern",
+                company: "BrandPlus",
+                image: "https://placehold.co/600x400",
+                logo: "https://placehold.co/50",
+                location: "New York, NY",
+                duration: "Fall 2025",
+                type: "Part-time",
+                salary: "$20/hr",
+                description: "Assist our marketing team in creating campaigns, analyzing market trends, and developing social media strategies for our diverse client portfolio.",
+                posted: "1 week ago"
+            },
+            {
+                id: 3,
+                title: "Finance Analyst Intern",
+                company: "CapitalBank",
+                image: "https://placehold.co/600x400",
+                logo: "https://placehold.co/50",
+                location: "Chicago, IL",
+                duration: "Winter 2025",
+                type: "Full-time",
+                salary: "$25/hr",
+                description: "Work with our finance team to analyze market data, prepare financial reports, and assist in investment decision-making processes.",
+                posted: "5 days ago"
+            },
+            {
+                id: 4,
+                title: "Graphic Design Intern",
+                company: "CreativeMinds",
+                image: "https://placehold.co/600x400",
+                logo: "https://placehold.co/50",
+                location: "Remote",
+                duration: "Flexible",
+                type: "Contract",
+                salary: "Negotiable",
+                description: "Create visual content for our digital marketing campaigns, social media platforms, and client projects. Must be proficient in Adobe Creative Suite.",
+                posted: "3 days ago"
+            },
+            {
+                id: 5,
+                title: "Data Science Intern",
+                company: "DataInnovate",
+                image: "https://placehold.co/600x400",
+                logo: "https://placehold.co/50",
+                location: "Boston, MA",
+                duration: "Summer 2025",
+                type: "Full-time",
+                salary: "$35/hr",
+                description: "Work with our data team to analyze large datasets, build predictive models, and create visualizations that drive business decisions.",
+                posted: "1 day ago"
+            },
+            {
+                id: 6,
+                title: "HR Intern",
+                company: "PeopleFirst",
+                image: "https://placehold.co/600x400",
+                logo: "https://placehold.co/50",
+                location: "Austin, TX",
+                duration: "Fall 2025",
+                type: "Part-time",
+                salary: "$18/hr",
+                description: "Assist the HR department with recruitment processes, employee engagement initiatives, and administrative support for various HR functions.",
+                posted: "2 weeks ago"
+            }
+        ];
+
+        // DOM elements
+        const internshipList = document.getElementById('internshipList');
+        const applicationModal = document.getElementById('applicationModal');
+        const closeModal = document.getElementById('closeModal');
+        const applicationForm = document.getElementById('applicationForm');
+        const resumeUpload = document.getElementById('resumeUpload');
+        const resumeInput = document.getElementById('resume');
+
+        // Display internships
+        function displayInternships(internshipsToDisplay = internships) {
+            internshipList.innerHTML = '';
+            internshipsToDisplay.forEach(internship => {
+                const internCard = document.createElement('div');
+                internCard.className = 'internship-card';
+                internCard.innerHTML = `
+                    <img src="${internship.image}" alt="${internship.title} position at ${internship.company}" class="internship-image">
+                    <div class="internship-content">
+                        <div class="internship-header">
+                            <h3 class="internship-title">${internship.title}</h3>
+                            <div class="company-badge">
+                                <img src="${internship.logo}" alt="${internship.company} logo" class="company-logo">
+                                <span>${internship.company}</span>
+                            </div>
+                        </div>
+                        <div class="internship-details">
+                            <div class="detail-tag">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${internship.location}</span>
+                            </div>
+                            <div class="detail-tag">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>${internship.duration}</span>
+                            </div>
+                            <div class="detail-tag">
+                                <i class="fas fa-clock"></i>
+                                <span>${internship.type}</span>
+                            </div>
+                            <div class="detail-tag">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>${internship.salary}</span>
+                            </div>
+                        </div>
+                        <p class="internship-desc">${internship.description}</p>
+                        <div class="internship-footer">
+                            <span class="posted-date">Posted ${internship.posted}</span>
+                            <button class="apply-btn" data-id="${internship.id}">Apply Now</button>
+                        </div>
+                    </div>
+                `;
+                internshipList.appendChild(internCard);
+            });
+
+            // Add event listeners to apply buttons
+            document.querySelectorAll('.apply-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const internshipId = parseInt(this.getAttribute('data-id'));
+                    openApplicationModal(internshipId);
+                });
+            });
+        }
+
+        // Open application modal
+        function openApplicationModal(internshipId) {
+            const internship = internships.find(i => i.id === internshipId);
+            if (internship) {
+                document.querySelector('.modal-title').textContent = `Apply for ${internship.title} at ${internship.company}`;
+                applicationModal.classList.add('active');
+            }
+        }
+
+        // Close application modal
+        closeModal.addEventListener('click', () => {
+            applicationModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        applicationModal.addEventListener('click', (e) => {
+            if (e.target === applicationModal) {
+                applicationModal.classList.remove('active');
+            }
+        });
+
+        // Form submission
+        applicationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Application submitted successfully!');
+            applicationModal.classList.remove('active');
+            applicationForm.reset();
+        });
+
+        // Resume upload styling
+        resumeUpload.addEventListener('click', () => {
+            resumeInput.click();
+        });
+
+        resumeInput.addEventListener('change', () => {
+            if (resumeInput.files.length > 0) {
+                resumeUpload.innerHTML = `
+                    <i class="fas fa-check-circle file-upload-icon" style="color: var(--success);"></i>
+                    <p class="file-upload-text">${resumeInput.files[0].name}</p>
+                    <p class="file-upload-text">${(resumeInput.files[0].size / 1024 / 1024).toFixed(2)} MB</p>
+                `;
+            }
+        });
+
+        // Drag and drop for resume
+        resumeUpload.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            resumeUpload.style.borderColor = (--primary);
+            resumeUpload.style.backgroundColor = 'var(--light)';
+        });
+
+        resumeUpload.addEventListener('dragleave', () => {
+            resumeUpload.style.borderColor = 'var(--light-gray)';
+            resumeUpload.style.backgroundColor = 'var(--light)';
+        });
+
+        resumeUpload.addEventListener('drop', (e) => {
+            e.preventDefault();
+            resumeUpload.style.borderColor = 'var(--light-gray)';
+            resumeUpload.style.backgroundColor = 'var(--light)';
+            
+            if (e.dataTransfer.files.length) {
+                resumeInput.files = e.dataTransfer.files;
+                const event = new Event('change');
+                resumeInput.dispatchEvent(event);
+            }
+        });
+
+        // Filter functionality would be implemented here
+        // For now we'll just display all internships when page loads
+        // Login Modal Elements
+        const loginModal = document.getElementById('loginModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+        const loginForm = document.getElementById('loginForm');
+
+        // Open login modal
+        loginBtn.addEventListener('click', () => {
+            loginModal.classList.add('active');
+        });
+
+        // Close login modal
+        closeLoginModal.addEventListener('click', () => {
+            loginModal.classList.remove('active');
+        });
+
+        // Handle login form submission
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Replace with actual login logic
+            alert('Login functionality would verify credentials here');
+            loginModal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        loginModal.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.classList.remove('active');
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            displayInternships();
+        });
+    </script>
+</body>
+</html>
+
+        
